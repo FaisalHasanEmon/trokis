@@ -5,12 +5,12 @@ import Navbar from "../components/navbar/Navbar";
 
 const AdminLayout = () => {
   return (
-    <main className=" w-full font-montserrat ">
+    <main className=" w-dvw font-montserrat ">
       <section className="flex h-screen overflow-hidden w-full">
         {/*1 left sidebar */}
         <SideBar></SideBar>
         {/* 2 right site content */}
-        <div className="w-dvw px-5 overflow-y-scroll bg-[#F2F5F7] border relative">
+        <div className="w-full px-5 overflow-y-scroll bg-[#F2F5F7]  ">
           <Navbar></Navbar>
           <Outlet></Outlet>
         </div>
