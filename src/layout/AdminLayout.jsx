@@ -9,7 +9,7 @@ const AdminLayout = () => {
         {/*1 left sidebar */}
         <SideBar></SideBar>
         {/* 2 right site content */}
-        <div className="w-full  px-5 overflow-y-scroll">
+        <div className="w-full  px-5 overflow-y-scroll bg-[#F2F5F7]">
           <Outlet></Outlet>
         </div>
       </section>

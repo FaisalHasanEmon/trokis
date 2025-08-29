@@ -37,7 +37,7 @@ const routes = createBrowserRouter([
         element: <Driver></Driver>,
       },
       {
-        path: "/deriver-request",
+        path: "/driver-request",
         element: <DriverRequest></DriverRequest>,
       },
       {
