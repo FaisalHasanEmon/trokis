@@ -2,45 +2,50 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [showDropDown, setDropDown] = useState(false);
-  const handleDropDown = () => {
-    setDropDown(!showDropDown);
-  };
+  const handleDropDown = () => setDropDown(!showDropDown);
+
   const user = {
     name: "Jane Cooper",
     profileImage: "/NavbarIcons/user.png",
   };
+
   const notification = [{ id: 1, notification: "Hello World" }];
-  //   const notification = [];
+  // const notification = [];
+
   return (
-    // <nav className="sticky w-full  mt-10 ">
-    <nav className="mt-5 bg-[#FFFFFF] py-3 px-5 shadow  z-50">
-      <div className="flex justify-between items-center     text-[#333333]">
+    <nav className="mt-5 bg-white py-3 px-5 shadow z-50 relative">
+      <div className="flex justify-between items-center text-[#333333]">
         {/* Welcome Message */}
         <div>
-          <h2 className="text-2xl font-medium">Welcome, {user?.name}</h2>
-          <p className="text-[16px]">Have a nice day</p>
+          <h2 className="text-xl md:text-2xl font-medium">
+            Welcome, {user?.name}
+          </h2>
+          <p className="text-sm md:text-base">Have a nice day</p>
         </div>
-        {/* Dropdown Option */}
-        <div
-          className="flex justify-center items-center gap-8"
-          onClick={handleDropDown}
-        >
+
+        {/* Right Section */}
+        <div className="flex items-center gap-4 md:gap-8">
+          {/* Notification Icon */}
           <figure className="relative">
             <img
               src="/NavbarIcons/notification.png"
-              className="w-6 h-6"
+              className="w-5 h-5 md:w-6 md:h-6"
               alt="Notification Icons"
             />
             {notification.length > 0 && (
-              <div className="absolute -top-[3px] -right-[6px]  w-[18px] h-[18px] rounded-full bg-[#333333]  text-white flex justify-center items-center ">
-                {/* <p className="text-[10px]">{notification.length}</p> */}
-                <p className="text-[10px]">12</p>
+              <div className="absolute -top-1 -right-1 w-4 h-4 md:w-[18px] md:h-[18px] rounded-full bg-[#333333] text-white flex justify-center items-center">
+                <p className="text-[10px] md:text-[10px]">12</p>
               </div>
             )}
           </figure>
-          <div className="flex justify-center items-center gap-2.5">
+
+          {/* Profile Section */}
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={handleDropDown}
+          >
             {user?.profileImage && (
-              <figure className="w-12 h-12 rounded-full overflow-clip">
+              <figure className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-clip">
                 <img
                   src={user?.profileImage}
                   className="w-full h-full object-cover object-top"
@@ -48,10 +53,12 @@ const Navbar = () => {
                 />
               </figure>
             )}
-            <p>{user?.name}</p>
+            <p className="hidden sm:block text-sm md:text-base">{user?.name}</p>
             <figure>
               <img
-                className={`${showDropDown ? "" : "rotate-180"}`}
+                className={`${
+                  showDropDown ? "" : "rotate-180"
+                } transition-transform`}
                 src="/NavbarIcons/dropDownArrow.png"
                 alt="Drop Down Arrow"
               />
@@ -59,6 +66,17 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Dropdown Menu */}
+      {showDropDown && (
+        <div className="absolute right-0 mt-5 w-48 bg-white border rounded-lg shadow-lg shadow-gray-500 p-4 ">
+          <ul className="space-y-2 text-sm">
+            <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>
+            <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>
+            <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

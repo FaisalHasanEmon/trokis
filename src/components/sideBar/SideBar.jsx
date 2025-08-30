@@ -45,24 +45,25 @@ const SideBar = () => {
       activeIcon: "/DashboardIcons/categories-active.png",
       link: "/categories",
     },
+
     {
       id: "7",
-      button: "Settings",
-      icon: "/DashboardIcons/settings.png",
-      activeIcon: "/DashboardIcons/settings-active.png",
-      link: "/settings",
-    },
-    {
-      id: "8",
       button: "Support",
       icon: "/DashboardIcons/support.png",
       activeIcon: "/DashboardIcons/support-active.png",
       link: "/support",
     },
+    {
+      id: "8",
+      button: "Settings",
+      icon: "/DashboardIcons/settings.png",
+      activeIcon: "/DashboardIcons/settings-active.png",
+      link: "/settings",
+    },
   ];
   return (
     <aside
-      className="w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2"
+      className="w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 "
       // style={{ boxShadow: "4px 0 10px rgba(166, 194, 179, 1)" }}
     >
       {/* Logo */}

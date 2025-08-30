@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BarChart,
   Bar,
@@ -7,7 +6,6 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
-import { Eye } from "lucide-react";
 import Table from "../../../components/table/Table";
 
 const Dashboard = () => {
@@ -160,44 +158,7 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Users Table */}
-      <div className=" rounded-xl shadow-sm border overflow-hidden">
-        <div className="p-6 border-b border-gray-100">
-          <h3 className="text-lg md:text-2xl font-semibold text-gray-900">
-            Recent user
-          </h3>
-        </div>
-
-        {/* Desktop/Tablet Table */}
-        <div className="hidden sm:block overflow-x-auto">
-          <Table data={recentUsers}></Table>
-        </div>
-
-        {/* Mobile Cards */}
-        <div className="sm:hidden">
-          {recentUsers.map((user, index) => (
-            <div
-              key={user.id}
-              className="p-4 border-b border-gray-100 last:border-b-0"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-sm font-medium text-gray-900">
-                    #{index + 1}
-                  </span>
-                  <h4 className="font-medium text-gray-900">{user.name}</h4>
-                </div>
-                <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                  <Eye className="w-4 h-4 text-gray-600" />
-                </button>
-              </div>
-              <div className="space-y-1">
-                <p className="text-sm text-gray-500">Email: {user.email}</p>
-                <p className="text-sm text-gray-500">Phone: {user.phone}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Table dataOf="Recent Users" data={recentUsers}></Table>
     </div>
   );
 };

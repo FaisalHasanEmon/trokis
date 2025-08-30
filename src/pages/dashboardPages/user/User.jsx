@@ -1,4 +1,3 @@
-import React from "react";
 import Table from "../../../components/table/Table";
 
 const User = () => {
@@ -67,7 +66,7 @@ const User = () => {
   ];
   return (
     <section className="mt-6 border rounded-[12px] overflow-clip">
-      <Table data={recentUsers}></Table>
+      <Table dataOf="Recent User" data={recentUsers}></Table>
     </section>
   );
 };

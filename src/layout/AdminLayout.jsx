@@ -8,7 +8,9 @@ const AdminLayout = () => {
     <main className=" w-dvw font-montserrat ">
       <section className="flex h-screen overflow-hidden w-full">
         {/*1 left sidebar */}
-        <SideBar></SideBar>
+        <div className="hidden sm:block">
+          <SideBar></SideBar>
+        </div>
         {/* 2 right site content */}
         <div className="w-full px-5 overflow-y-scroll bg-[#F2F5F7]  ">
           <Navbar></Navbar>
