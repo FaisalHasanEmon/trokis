@@ -1,4 +1,3 @@
-import React from "react";
 import AdminLayout from "../layout/AdminLayout";
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../pages/dashboardPages/dashboard/Dashboard";
@@ -7,13 +6,18 @@ import Earning from "../pages/dashboardPages/earning/Earning";
 import Driver from "../pages/dashboardPages/driver/Driver";
 import DriverRequest from "../pages/dashboardPages/driverRequest/DriverRequest";
 import Categories from "../pages/dashboardPages/categories/Categories";
-import Settings from "../pages/dashboardPages/settings/Settings";
 import Support from "../pages/dashboardPages/support/Support";
 import AuthLayout from "../layout/AuthLayout";
 import Login from "../pages/authPages/login/Login";
 import ForgetPassword from "../pages/authPages/forgetPassword/ForgetPassword";
 import VerifyEmail from "../pages/authPages/verifyEmail/VerifyEmail";
 import ResetPassword from "../pages/authPages/resetPassword/ResetPassword";
+import SettingsLayout from "../layout/SettingsLayout";
+import PersonalInformation from "../pages/dashboardPages/settings/personalInformation/PersonalInformation";
+import ChangePassword from "../pages/dashboardPages/settings/changePassword/ChangePassword";
+import TermsAndConditions from "../pages/dashboardPages/settings/termsAndConditions/TermsAndConditions";
+import PrivacyPolicy from "../pages/dashboardPages/settings/privacyPolicy/PrivacyPolicy";
+import TrustAndSafety from "../pages/dashboardPages/settings/trustAndSafety/TrustAndSafety";
 
 const routes = createBrowserRouter([
   {
@@ -46,7 +50,29 @@ const routes = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <Settings></Settings>,
+        element: <SettingsLayout></SettingsLayout>,
+        children: [
+          {
+            path: "/settings/personal-information",
+            element: <PersonalInformation></PersonalInformation>,
+          },
+          {
+            path: "/settings/change-password",
+            element: <ChangePassword></ChangePassword>,
+          },
+          {
+            path: "/settings/terms-and-conditions",
+            element: <TermsAndConditions></TermsAndConditions>,
+          },
+          {
+            path: "/settings/privacy-policy",
+            element: <PrivacyPolicy></PrivacyPolicy>,
+          },
+          {
+            path: "/settings/trust-and-safety",
+            element: <TrustAndSafety></TrustAndSafety>,
+          },
+        ],
       },
       {
         path: "/support",
