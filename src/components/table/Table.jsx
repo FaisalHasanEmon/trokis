@@ -50,7 +50,7 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
                   </td>
                   <td className="px-6 py-4 text-center  ">
                     <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                      <Eye className="w-4 h-4 text-gray-600" />
+                      <Info className="w-4 h-4 text-gray-600" />
                     </button>
                   </td>
                 </tr>
