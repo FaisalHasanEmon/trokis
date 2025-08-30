@@ -57,7 +57,7 @@ const Navbar = () => {
             <figure>
               <img
                 className={`${
-                  showDropDown ? "" : "rotate-180"
+                  showDropDown ? "rotate-180" : ""
                 } transition-transform`}
                 src="/NavbarIcons/dropDownArrow.png"
                 alt="Drop Down Arrow"

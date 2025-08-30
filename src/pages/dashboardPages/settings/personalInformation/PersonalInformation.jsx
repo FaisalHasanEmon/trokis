@@ -32,20 +32,20 @@ const PersonalInformation = () => {
           </div>
 
           {/* Content */}
-          <div className="p-6">
-            <div className="flex gap-8">
+          <div className="py-16 pl-28 pr-6">
+            <div className="flex gap-8 ">
               {/* Profile Section */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center border border-gray-400 px-[78px] py-16 bg-[#FAFAFA] rounded-[8px]">
                 <div className="relative">
                   <img
-                    src="https://images.unsplash.com/photo-1494790108755-2616c99c8b2c?w=100&h=100&fit=crop&crop=face"
+                    src="/SettingsPagePhoto/adminUpdatePhoto.jpg"
                     alt="Profile"
-                    className="w-20 h-20 rounded-full object-cover"
+                    className="w-36 h-36 border-[5px] rounded-full object-cover"
                   />
                 </div>
-                <div className="mt-3 text-center">
-                  <div className="text-sm text-gray-600">Profile</div>
-                  <div className="inline-flex items-center justify-center px-3 py-1 mt-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full">
+                <div className="mt-8 text-center">
+                  <div className="text-lg text-black font-medium">Profile</div>
+                  <div className="inline-flex items-center justify-center px-3 py-1 mt-1  text-black text-2xl font-medium ">
                     Admin
                   </div>
                 </div>
