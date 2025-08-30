@@ -67,14 +67,14 @@ const SideBar = () => {
       // style={{ boxShadow: "4px 0 10px rgba(166, 194, 179, 1)" }}
     >
       {/* Logo */}
-      <div className="mt-[34px]  ">
+      <div>
         <Link to="/">
           <img className="w-[200px]" src="Logo/Logo.png" alt="Logo" />
         </Link>
       </div>
       {/* Navigating Buttons */}
       <div className=" py-2.5 ">
-        <ul className="space-y-5">
+        <ul className="space-y-3">
           {navButtons?.map((navButton) => (
             <li key={navButton?.id}>
               <NavLink
