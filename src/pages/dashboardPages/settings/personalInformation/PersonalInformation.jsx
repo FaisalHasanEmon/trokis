@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { Edit3 } from "lucide-react";
 
 const PersonalInformation = () => {
+  const [edit, setEdit] = useState(true);
   const [formData, setFormData] = useState({
     name: "Jane Cooper",
     email: "janecooper@gmail.com",
     phone: "30059722",
   });
+
+  const handleEdit = () => {
+    setEdit(!edit);
+  };
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
@@ -14,38 +19,45 @@ const PersonalInformation = () => {
       [field]: value,
     }));
   };
+  const handleUpdatePersonalInfo = () => {
+    console.log(formData);
+  };
 
   return (
-    <div className="  py-6">
+    <div className="py-6">
       <div className="w-full">
         {/* Personal Information Card */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
             <h1 className="text-lg font-medium text-gray-900">
               Personal Information
             </h1>
-            <button className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors">
+            <button
+              onClick={handleEdit}
+              hidden={edit ? false : true}
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors"
+            >
               <Edit3 size={16} />
               Edit Profile
             </button>
           </div>
 
           {/* Content */}
-          <div className="py-16 pl-28 pr-6">
-            <div className="flex gap-8 ">
+          <div className="py-8 px-4 sm:px-6 lg:py-12 lg:px-12 space-y-6">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
               {/* Profile Section */}
-              <div className="flex flex-col items-center border border-gray-400 px-[78px] py-16 bg-[#FAFAFA] rounded-[8px]">
+              <div className="flex flex-col items-center border border-gray-300 px-6 py-8 sm:px-10 sm:py-12 bg-[#FAFAFA] rounded-lg flex-shrink-0">
                 <div className="relative">
                   <img
                     src="/SettingsPagePhoto/adminUpdatePhoto.jpg"
                     alt="Profile"
-                    className="w-36 h-36 border-[5px] rounded-full object-cover"
+                    className="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 border-[4px] rounded-full object-cover"
                   />
                 </div>
-                <div className="mt-8 text-center">
+                <div className="mt-6 text-center">
                   <div className="text-lg text-black font-medium">Profile</div>
-                  <div className="inline-flex items-center justify-center px-3 py-1 mt-1  text-black text-2xl font-medium ">
+                  <div className="inline-flex items-center justify-center px-3 py-1 mt-1 text-black text-xl sm:text-2xl font-medium">
                     Admin
                   </div>
                 </div>
@@ -62,8 +74,9 @@ const PersonalInformation = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter your name"
+                    readOnly={edit ? true : false}
                   />
                 </div>
 
@@ -75,8 +88,9 @@ const PersonalInformation = () => {
                   <input
                     type="email"
                     value={formData.email}
+                    readOnly={edit ? true : false}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -98,15 +112,30 @@ const PersonalInformation = () => {
                     <input
                       type="tel"
                       value={formData.phone}
+                      readOnly={edit ? true : false}
                       onChange={(e) =>
                         handleInputChange("phone", e.target.value)
                       }
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter phone number"
                     />
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Save Button */}
+            <div className="w-full flex justify-end">
+              <button
+                hidden={edit ? true : false}
+                onClick={() => {
+                  handleEdit();
+                  handleUpdatePersonalInfo();
+                }}
+                className="border bg-black hover:bg-black/80 py-3 px-6 sm:py-4 sm:px-8 rounded-full text-white font-medium text-sm sm:text-base"
+              >
+                Save Changes
+              </button>
             </div>
           </div>
         </div>
@@ -116,89 +145,3 @@ const PersonalInformation = () => {
 };
 
 export default PersonalInformation;
-
-// import React from "react";
-// import { Pencil } from "lucide-react";
-
-// const ProfilePage = () => {
-//   return (
-//     <div className=" bg-gray-100 flex items-center justify-center mt-32">
-//       <div className="w-full  bg-white rounded-lg shadow p-6">
-//         {/* Header */}
-//         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-//           <h2 className="text-xl font-semibold">Personal Information</h2>
-//           <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full text-sm mt-3 sm:mt-0">
-//             <Pencil size={16} /> Edit Profile
-//           </button>
-//         </div>
-
-//         {/* Content */}
-//         <div className="flex flex-col md:flex-row gap-6">
-//           {/* Profile Card */}
-//           <div className="flex flex-col items-center border rounded-lg p-4 w-full md:w-1/3">
-//             <img
-//               src="https://via.placeholder.com/150"
-//               alt="Profile"
-//               className="w-32 h-32 rounded-full object-cover"
-//             />
-//             <p className="mt-4 text-gray-700 font-medium">Profile</p>
-//             <p className="text-lg font-semibold">Admin</p>
-//           </div>
-
-//           {/* Form Section */}
-//           <div className="flex-1">
-//             <form className="grid grid-cols-1 gap-4">
-//               {/* Name */}
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-1">
-//                   Name
-//                 </label>
-//                 <input
-//                   type="text"
-//                   defaultValue="Jane Cooper"
-//                   className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-//                 />
-//               </div>
-
-//               {/* Email */}
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-1">
-//                   E-mail
-//                 </label>
-//                 <input
-//                   type="email"
-//                   defaultValue="alkhahlaksalkgkgalk@hmail.com"
-//                   className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-//                 />
-//               </div>
-
-//               {/* Phone Number */}
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-1">
-//                   Phone Number
-//                 </label>
-//                 <div className="flex gap-2">
-//                   <div className="flex items-center gap-2 border rounded-lg px-3 py-2">
-//                     <img
-//                       src="https://flagcdn.com/us.svg"
-//                       alt="US Flag"
-//                       className="w-6 h-4 rounded-sm"
-//                     />
-//                     <span className="text-sm">+1242</span>
-//                   </div>
-//                   <input
-//                     type="text"
-//                     defaultValue="3000597212"
-//                     className="flex-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
-//                   />
-//                 </div>
-//               </div>
-//             </form>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfilePage;
