@@ -1,6 +1,14 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  CartesianGrid,
+} from "recharts";
 import { Eye } from "lucide-react";
+import Table from "../../../components/table/Table";
 
 const Dashboard = () => {
   // Key metric cards
@@ -127,11 +135,12 @@ const Dashboard = () => {
               data={chartData}
               margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
             >
+              <CartesianGrid vertical={false} />
               <XAxis
                 dataKey="name"
                 axisLine={true}
-                tickLine={false}
-                tick={{ fontSize: 12, fill: "#6B7280" }}
+                tickLine={true}
+                tick={{ fontSize: 12, fill: "#545454" }}
               />
               <YAxis
                 axisLine={false}
@@ -160,50 +169,7 @@ const Dashboard = () => {
 
         {/* Desktop/Tablet Table */}
         <div className="hidden sm:block overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-black">
-              <tr>
-                <th className="px-6 py-4 text-center text-sm font-medium text-white">
-                  #SL
-                </th>
-                <th className="px-6 py-4 text-center text-sm font-medium text-white">
-                  Name
-                </th>
-                <th className="px-6 py-4 text-center text-sm font-medium text-white">
-                  Email
-                </th>
-                <th className="px-6 py-4 text-center text-sm font-medium text-white">
-                  Phone Number
-                </th>
-                <th className="px-6 py-4 text-center text-sm font-medium text-white">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {recentUsers.map((user, index) => (
-                <tr key={user.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 text-center text-sm text-gray-900">
-                    {index + 1}
-                  </td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-900">
-                    {user.name}
-                  </td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-500">
-                    {user.email}
-                  </td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-500">
-                    {user.phone}
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                      <Eye className="w-4 h-4 text-gray-600" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Table data={recentUsers}></Table>
         </div>
 
         {/* Mobile Cards */}
