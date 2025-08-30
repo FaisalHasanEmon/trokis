@@ -12,7 +12,7 @@ const AdminLayout = () => {
           <SideBar></SideBar>
         </div>
         {/* 2 right site content */}
-        <div className="w-full px-5 overflow-y-scroll bg-[#F2F5F7]  ">
+        <div className="w-full px-5 overflow-y-scroll bg-[#F2F5F7] mb-5 ">
           <Navbar></Navbar>
           <Outlet></Outlet>
         </div>
