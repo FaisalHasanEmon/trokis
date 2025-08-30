@@ -105,8 +105,8 @@ const SideBar = () => {
         </ul>
       </div>
       {/* Logout Button */}
-      <div className="  w-full mt-[10px] mb-[62px]">
-        <button className="gap-2.5 py-3 px-5 rounded-4xl  bg-[#F70300] hover:bg-red-500 text-white flex justify-center items-center w-full">
+      <div className="  w-full mt-[10px] mb-[62px] px-5">
+        <button className="gap-2.5 py-3  rounded-4xl  bg-[#F70300] hover:bg-red-500 text-white flex justify-center items-center w-full">
           <figure className="w-6">
             <img
               src="/DashboardIcons/logout.png"

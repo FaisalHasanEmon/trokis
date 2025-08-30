@@ -51,32 +51,30 @@ const routes = createBrowserRouter([
       {
         path: "/settings",
         element: <SettingsLayout></SettingsLayout>,
-        children: [
-          {
-            path: "/settings/personal-information",
-            element: <PersonalInformation></PersonalInformation>,
-          },
-          {
-            path: "/settings/change-password",
-            element: <ChangePassword></ChangePassword>,
-          },
-          {
-            path: "/settings/terms-and-conditions",
-            element: <TermsAndConditions></TermsAndConditions>,
-          },
-          {
-            path: "/settings/privacy-policy",
-            element: <PrivacyPolicy></PrivacyPolicy>,
-          },
-          {
-            path: "/settings/trust-and-safety",
-            element: <TrustAndSafety></TrustAndSafety>,
-          },
-        ],
       },
       {
         path: "/support",
         element: <Support></Support>,
+      },
+      {
+        path: "/settings/personal-information",
+        element: <PersonalInformation></PersonalInformation>,
+      },
+      {
+        path: "/settings/change-password",
+        element: <ChangePassword></ChangePassword>,
+      },
+      {
+        path: "/settings/terms-and-conditions",
+        element: <TermsAndConditions></TermsAndConditions>,
+      },
+      {
+        path: "/settings/privacy-policy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
+        path: "/settings/trust-and-safety",
+        element: <TrustAndSafety></TrustAndSafety>,
       },
     ],
   },
