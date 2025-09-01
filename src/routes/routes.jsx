@@ -12,9 +12,9 @@ import Login from "../pages/authPages/login/Login";
 import ForgetPassword from "../pages/authPages/forgetPassword/ForgetPassword";
 import VerifyEmail from "../pages/authPages/verifyEmail/VerifyEmail";
 import ResetPassword from "../pages/authPages/resetPassword/ResetPassword";
-import SettingsLayout from "../layout/SettingsLayout";
+
 import PersonalInformation from "../pages/dashboardPages/settings/personalInformation/PersonalInformation";
-import ChangePassword from "../pages/dashboardPages/settings/changePassword/ChangePassword";
+import Settings from "../pages/dashboardPages/settings/Settings";
 import TermsAndConditions from "../pages/dashboardPages/settings/termsAndConditions/TermsAndConditions";
 import PrivacyPolicy from "../pages/dashboardPages/settings/privacyPolicy/PrivacyPolicy";
 import TrustAndSafety from "../pages/dashboardPages/settings/trustAndSafety/TrustAndSafety";
@@ -50,7 +50,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: <SettingsLayout></SettingsLayout>,
+        element: <Settings></Settings>,
       },
       {
         path: "/support",
@@ -59,10 +59,6 @@ const routes = createBrowserRouter([
       {
         path: "/settings/personal-information",
         element: <PersonalInformation></PersonalInformation>,
-      },
-      {
-        path: "/settings/change-password",
-        element: <ChangePassword></ChangePassword>,
       },
       {
         path: "/settings/terms-and-conditions",

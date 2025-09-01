@@ -63,13 +63,13 @@ const SideBar = () => {
   ];
   return (
     <aside
-      className="w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 "
+      className="w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 pt-7.5"
       // style={{ boxShadow: "4px 0 10px rgba(166, 194, 179, 1)" }}
     >
       {/* Logo */}
       <div>
         <Link to="/">
-          <img className="w-[200px]" src="Logo/Logo.png" alt="Logo" />
+          <img className="w-full" src="Logo/Logo.png" alt="Logo" />
         </Link>
       </div>
       {/* Navigating Buttons */}
