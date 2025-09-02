@@ -69,7 +69,7 @@ const SideBar = () => {
       {/* Logo */}
       <div>
         <Link to="/">
-          <img className="w-full" src="Logo/Logo.png" alt="Logo" />
+          <img className="w-full" src="/Logo/Logo.png" alt="Logo" />
         </Link>
       </div>
       {/* Navigating Buttons */}
