@@ -6,7 +6,6 @@ const AuthLayout = () => {
   return (
     <section className="font-montserrat bg-[#F2F5F7] flex flex-col lg:flex-row h-screen w-full">
       {/* Left Side Image (Only for large and above) */}
-
       <div
         className={`hidden overflow-clip lg:flex ${
           location.pathname === "/auth/login" ? "bg-[#FFF9F9]" : ""
