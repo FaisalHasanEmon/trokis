@@ -67,7 +67,7 @@ const Support = () => {
   ];
   return (
     <section className="mt-6 border rounded-[12px] overflow-clip">
-      <Table dataOf="Support" data={recentUsers}></Table>
+      <Table dataOf="support" data={recentUsers}></Table>
     </section>
   );
 };
