@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, Check, KeyRound } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -7,7 +8,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -22,6 +23,7 @@ export default function Login() {
     setTimeout(() => {
       alert("Login successful! (This is a demo)");
       setIsLoading(false);
+      navigate("/");
     }, 2000);
   };
 
@@ -30,7 +32,7 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-br  flex items-center justify-center p-5 ">
+    <div className="w-full bg-gradient-to-br  flex items-center justify-center py-10 px-0 ">
       <div className="w-full   flex items-center justify-center">
         <div className="w-full ">
           {/* Title */}
@@ -103,18 +105,19 @@ export default function Login() {
                 </div>
                 Remember me
               </label>
-              <a
-                href="#"
-                className="text-blue-500 hover:text-blue-600 hover:underline transition-colors duration-200"
+              <Link
+                to="/auth/forget-password"
+                className="text-[#545454]  hover:underline transition-colors duration-200"
               >
                 Forgot password?
-              </a>
+              </Link>
             </div>
 
             {/* Sign In Button */}
             <button
               type="submit"
               disabled={isLoading}
+              onClick={handleSubmit}
               className="w-full py-4 bg-black text-white rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? "Signing In..." : "Sign In"}
