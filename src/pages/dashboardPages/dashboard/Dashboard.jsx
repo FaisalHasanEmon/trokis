@@ -90,12 +90,12 @@ const Dashboard = () => {
         {dashboardData?.map((item) => (
           <div
             key={item?.id}
-            className=" rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border bg-white border-black text-center"
+            className=" rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border flex flex-col justify-center items-center bg-white border-black text-center"
           >
-            <h3 className="text-xs sm:text-2xl font-medium text-black mb-1 sm:mb-2">
+            <h3 className="text-xs sm:text-2xl font-medium text-black mb-1 sm:mb-2 grow-1">
               {item?.dataInfoType}
             </h3>
-            <p className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900">
+            <p className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 ">
               {item?.dataInfoType.includes("earn") ? "$" : ""}
               {item?.dataInfo}
             </p>
