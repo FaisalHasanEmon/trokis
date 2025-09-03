@@ -1,7 +1,7 @@
 import React from "react";
 import { MessageCircleMore, FileText } from "lucide-react";
 
-const DriverDocumentsPage = () => {
+const DriverRquest = () => {
   const documents = [
     { id: "nid", name: "NID.pdf" },
     { id: "license", name: "Driver License.pdf" },
@@ -97,4 +97,4 @@ const DriverDocumentsPage = () => {
   );
 };
 
-export default DriverDocumentsPage;
+export default DriverRquest;
