@@ -13,7 +13,7 @@ const DriverDocumentsPage = () => {
     <div className="  py-4 md:py-6 lg:py-8">
       <div className="w-full mx-auto">
         {/* Grid layout for multiple cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-6">
           {/* Render 6 identical cards as shown in the image */}
           {[...Array(6)].map((_, cardIndex) => (
             <div
