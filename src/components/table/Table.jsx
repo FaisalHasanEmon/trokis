@@ -1,13 +1,16 @@
-import { Eye, Info, X } from "lucide-react";
+import { Eye, Info, Link, X } from "lucide-react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom"; // Assuming you're using React Router
+import { useLocation, useNavigate } from "react-router-dom"; // Assuming you're using React Router
 
 const Table = ({ dataOf = "Not Defined", data = [] }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  console.log(dataOf);
 
   const handleInfoClick = (user) => {
+    if (dataOf === "support") return navigate("/support/contact");
     setSelectedUser(user);
     setIsModalOpen(true);
   };
