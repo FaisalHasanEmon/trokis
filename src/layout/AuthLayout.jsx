@@ -6,13 +6,15 @@ const AuthLayout = () => {
   return (
     <section className="font-montserrat bg-[#F2F5F7] flex flex-col lg:flex-row h-screen w-full">
       {/* Left Side Image (Only for large and above) */}
+
       <div
-        className={`hidden lg:flex ${
+        className={`hidden overflow-clip lg:flex ${
           location.pathname === "/auth/login" ? "bg-[#FFF9F9]" : ""
         }  h-screen lg:w-1/2 justify-center items-center`}
       >
+        {/* Login Page Image  */}
         {location.pathname === "/auth/login" && (
-          <figure className="max-w-xl">
+          <figure className="max-w-2xl">
             <img
               src="/AuthImages/Login.png"
               alt="Login Image"
@@ -20,11 +22,32 @@ const AuthLayout = () => {
             />
           </figure>
         )}
+        {/* Forget Page Image */}
         {location.pathname === "/auth/forget-password" && (
-          <figure className="max-w-xl">
+          <figure className="max-w-2xl">
             <img
               src="/AuthImages/ForgetPassword.png"
-              alt="Login Image"
+              alt="Forget Password Image"
+              className="max-w-full h-auto"
+            />
+          </figure>
+        )}
+        {/* Verify Email Page Image */}
+        {location.pathname === "/auth/verify-email" && (
+          <figure className="max-w-2xl">
+            <img
+              src="/AuthImages/verified.png"
+              alt="Verify Email Image"
+              className="max-w-full h-auto"
+            />
+          </figure>
+        )}
+        {/* Reset Password Page Image */}
+        {location.pathname === "/auth/reset-password" && (
+          <figure className="max-w-2xl">
+            <img
+              src="/AuthImages/resetPassword.png"
+              alt="Reset Password Image"
               className="max-w-full h-auto"
             />
           </figure>
