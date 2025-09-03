@@ -12,12 +12,12 @@ import Login from "../pages/authPages/login/Login";
 import ForgetPassword from "../pages/authPages/forgetPassword/ForgetPassword";
 import VerifyEmail from "../pages/authPages/verifyEmail/VerifyEmail";
 import ResetPassword from "../pages/authPages/resetPassword/ResetPassword";
-
 import PersonalInformation from "../pages/dashboardPages/settings/personalInformation/PersonalInformation";
 import Settings from "../pages/dashboardPages/settings/Settings";
 import TermsAndConditions from "../pages/dashboardPages/settings/termsAndConditions/TermsAndConditions";
 import PrivacyPolicy from "../pages/dashboardPages/settings/privacyPolicy/PrivacyPolicy";
 import TrustAndSafety from "../pages/dashboardPages/settings/trustAndSafety/TrustAndSafety";
+import SupportChatting from "../pages/dashboardPages/support/supportChatting/SupportChatting";
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +56,7 @@ const routes = createBrowserRouter([
         path: "/support",
         element: <Support></Support>,
       },
+
       {
         path: "/settings/personal-information",
         element: <PersonalInformation></PersonalInformation>,
@@ -95,6 +96,10 @@ const routes = createBrowserRouter([
         element: <ResetPassword></ResetPassword>,
       },
     ],
+  },
+  {
+    path: "/support/contact",
+    element: <SupportChatting></SupportChatting>,
   },
 ]);
 
