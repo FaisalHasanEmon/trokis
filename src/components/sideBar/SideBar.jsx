@@ -1,7 +1,8 @@
+import { PanelRightClose } from "lucide-react";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({ isOpen, onToggle }) => {
   const navButtons = [
     {
       id: "1",
@@ -61,63 +62,137 @@ const SideBar = () => {
       link: "/settings",
     },
   ];
+  // console.log(isOpen);
   return (
-    <aside
-      className="w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 pt-7.5"
-      // style={{ boxShadow: "4px 0 10px rgba(166, 194, 179, 1)" }}
-    >
-      {/* Logo */}
-      <div>
-        <Link to="/">
-          <img className="w-full" src="/Logo/Logo.png" alt="Logo" />
-        </Link>
-      </div>
-      {/* Navigating Buttons */}
-      <div className=" py-2.5 ">
-        <ul className="space-y-3">
-          {navButtons?.map((navButton) => (
-            <li key={navButton?.id}>
-              <NavLink
-                to={navButton?.link}
-                className={({ isActive }) =>
-                  `flex justify-start items-center gap-2.5 py-3 px-5  ${
-                    isActive
-                      ? "rounded-4xl bg-black text-white"
-                      : "bg-white text-black"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    <figure className="w-6">
-                      <img
-                        src={isActive ? navButton?.activeIcon : navButton?.icon}
-                        className={`w-full object-cover text-white`}
-                        alt={navButton?.button}
-                      />
-                    </figure>
-                    <p className="text-lg">{navButton?.button}</p>
-                  </>
-                )}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-      {/* Logout Button */}
-      <div className="  w-full mt-[10px] mb-[62px] px-5 ">
-        <button className="gap-2.5 py-3 cursor-pointer rounded-4xl  bg-[#F70300] hover:bg-red-500 text-white flex justify-center items-center w-full">
-          <figure className="w-6">
-            <img
-              src="/DashboardIcons/logout.png"
-              className="w-full object-cover"
-              alt="Logout Icon"
-            />
-          </figure>
-          <p>Logout</p>
-        </button>
-      </div>
-    </aside>
+    <>
+      {/* For laptop and desktop devices */}
+      <section className="hidden lg:block">
+        <aside className=" w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 pt-7.5">
+          {/* Logo */}
+          <div>
+            <Link to="/">
+              <img className="w-full" src="/Logo/Logo.png" alt="Logo" />
+            </Link>
+          </div>
+          {/* Navigating Buttons */}
+          <div className=" py-2.5 ">
+            <ul className="space-y-3">
+              {navButtons?.map((navButton) => (
+                <li key={navButton?.id}>
+                  <NavLink
+                    to={navButton?.link}
+                    className={({ isActive }) =>
+                      `flex justify-start items-center gap-2.5 py-3 px-5  ${
+                        isActive
+                          ? "rounded-4xl bg-black text-white"
+                          : "bg-white text-black"
+                      }`
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        <figure className="w-6">
+                          <img
+                            src={
+                              isActive ? navButton?.activeIcon : navButton?.icon
+                            }
+                            className={`w-full object-cover text-white`}
+                            alt={navButton?.button}
+                          />
+                        </figure>
+                        <p className="text-lg">{navButton?.button}</p>
+                      </>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* Logout Button */}
+          <div className="  w-full mt-[10px] mb-[62px] px-5 ">
+            <button className="gap-2.5 py-3 cursor-pointer rounded-4xl  bg-[#F70300] hover:bg-red-500 text-white flex justify-center items-center w-full">
+              <figure className="w-6">
+                <img
+                  src="/DashboardIcons/logout.png"
+                  className="w-full object-cover"
+                  alt="Logout Icon"
+                />
+              </figure>
+              <p>Logout</p>
+            </button>
+          </div>
+        </aside>
+      </section>
+      {/* For mobile and tabs */}
+      {isOpen && (
+        <section className="  fixed h-full w-full overflow-clip bg-black/40 z-50">
+          <aside className="w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 pt-7.5 z-50">
+            {/* Logo */}
+            <div className="z-35 flex justify-between items-center relative">
+              <Link to="/">
+                <img className="w-[80%]" src="/Logo/Logo.png" alt="Logo" />
+              </Link>
+              <button className="text-red-700" onClick={onToggle}>
+                <PanelRightClose
+                  size={24}
+                  className="rotate-180"
+                ></PanelRightClose>
+              </button>
+            </div>
+            {/* Navigating Buttons */}
+            <div className=" py-2.5 ">
+              <ul className="space-y-3">
+                {navButtons?.map((navButton) => (
+                  <li key={navButton?.id}>
+                    <NavLink
+                      to={navButton?.link}
+                      onClick={onToggle}
+                      className={({ isActive }) =>
+                        `flex justify-start items-center gap-2.5 py-3 px-5  ${
+                          isActive
+                            ? "rounded-4xl bg-black text-white"
+                            : "bg-white text-black"
+                        }`
+                      }
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <figure className="w-6">
+                            <img
+                              src={
+                                isActive
+                                  ? navButton?.activeIcon
+                                  : navButton?.icon
+                              }
+                              className={`w-full object-cover text-white`}
+                              alt={navButton?.button}
+                            />
+                          </figure>
+                          <p className="text-lg">{navButton?.button}</p>
+                        </>
+                      )}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Logout Button */}
+            <div className="  w-full mt-[10px] mb-[62px] px-5 ">
+              <button className="gap-2.5 py-3 cursor-pointer rounded-4xl  bg-[#F70300] hover:bg-red-500 text-white flex justify-center items-center w-full">
+                <figure className="w-6">
+                  <img
+                    src="/DashboardIcons/logout.png"
+                    className="w-full object-cover"
+                    alt="Logout Icon"
+                  />
+                </figure>
+                <p>Logout</p>
+              </button>
+            </div>
+          </aside>
+        </section>
+      )}
+    </>
   );
 };
 
