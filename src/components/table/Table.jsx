@@ -19,7 +19,10 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
 
   // Modal content based on current location
   const getModalContent = () => {
-    if (location.pathname === "/user" && selectedUser) {
+    if (
+      (location.pathname === "/user" || location.pathname === "/") &&
+      selectedUser
+    ) {
       // Use manual data if not available in selectedUser
       const modalData = {
         sl: selectedUser.id || 78,
@@ -214,7 +217,7 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
 
   return (
     <>
-      {/* Recent Users Table */}
+      {/* Table */}
       <div className="rounded-xl shadow-sm border overflow-hidden">
         <div className="p-6 border-b border-gray-100">
           <h3 className="text-lg md:text-2xl font-semibold text-gray-900">
@@ -226,6 +229,7 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
         <div className="hidden sm:block overflow-x-auto">
           <table className="w-full">
             <thead className="bg-black">
+              {/* Heading Row */}
               <tr>
                 <th className="px-6 py-4 text-center text-sm font-medium text-white">
                   #SL
@@ -239,26 +243,36 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
                 <th className="px-6 py-4 text-center text-sm font-medium text-white">
                   Phone Number
                 </th>
+                {dataOf.toLowerCase().includes("driver") && (
+                  <th className="px-6 py-4 text-center text-sm font-medium text-white">
+                    Role
+                  </th>
+                )}
                 <th className="px-6 py-4 text-center text-sm font-medium text-white">
                   Action
                 </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {data.map((user, index) => (
-                <tr key={user.id} className="hover:bg-gray-50 *:border-b">
-                  <td className="px-6 py-4 text-center text-sm text-gray-900">
-                    {index + 1}
-                  </td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-900">
-                    {user.name}
-                  </td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-500">
-                    {user.email}
-                  </td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-500">
-                    {user.phone}
-                  </td>
+              {/* Rows */}
+              {data?.map((user, index) => (
+                <tr
+                  key={user.id}
+                  className="hover:bg-gray-50 *:border-b *:px-6 *:py-4 *:text-center *:text-sm *:text-[#333333]"
+                >
+                  {/* Serial Column */}
+                  <td className="">{index + 1}</td>
+                  {/* Name Column */}
+                  <td className="">{user?.name}</td>
+                  {/* Email Column */}
+                  <td className="">{user?.email}</td>
+                  {/* Phone Number Column */}
+                  <td className="">{user?.phone}</td>
+                  {/*  Role Column Only For Driver Page*/}
+                  {dataOf.toLowerCase().includes("driver") && (
+                    <td className="">{user?.role}</td>
+                  )}
+                  {/* Action Button Column */}
                   <td className="px-6 py-4 text-center">
                     <button
                       onClick={() => handleInfoClick(user)}
@@ -291,9 +305,12 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
                   <Info className="w-4 h-4 text-gray-600" />
                 </button>
               </div>
-              <div className="space-y-1">
-                <p className="text-sm text-gray-500">Email: {user.email}</p>
-                <p className="text-sm text-gray-500">Phone: {user.phone}</p>
+              <div className="space-y-1 *:text-sm *:text-gray-500">
+                <p className="">Email: {user.email}</p>
+                <p className="">Phone: {user.phone}</p>
+                {dataOf.toLowerCase().includes("driver") && (
+                  <p className="">Role: {user?.role}</p>
+                )}
               </div>
             </div>
           ))}
