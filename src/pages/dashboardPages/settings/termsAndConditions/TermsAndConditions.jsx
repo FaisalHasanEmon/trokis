@@ -1,5 +1,24 @@
+import { ChevronLeft } from "lucide-react";
+import ReadAndEdit from "../../../../components/readAndEdit/ReadAndEdit";
+import { Link } from "react-router-dom";
+
 const TermsAndConditions = () => {
-  return <div>This is terms and conditions page</div>;
+  return (
+    <>
+      <Link
+        to="/settings"
+        className="flex justify-start items-center gap-4 mt-5"
+      >
+        <ChevronLeft />
+        <h2 className="text-2xl font-medium gap-4">Terms & Conditions Edit</h2>
+      </Link>
+      <ReadAndEdit
+        title="Terms & Conditions"
+        fetchUrl="/fakeAPIs/termsAndConditions.json"
+        updateUrl="/fakeAPIs/termsAndConditions.json"
+      ></ReadAndEdit>
+    </>
+  );
 };
 
 export default TermsAndConditions;
