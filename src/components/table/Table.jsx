@@ -122,7 +122,7 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
           {/* Modal Header */}
           <div className="flex items-center justify-center p-4  border-gray-200 relative">
             <h2 className="text-lg font-medium text-gray-900 text-center">
-              Transaction De
+              Transaction
             </h2>
             <button
               onClick={closeModal}
