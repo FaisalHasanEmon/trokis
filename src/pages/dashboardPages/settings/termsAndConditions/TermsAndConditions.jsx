@@ -7,7 +7,7 @@ const TermsAndConditions = () => {
     <>
       <Link
         to="/settings"
-        className="flex justify-start items-center gap-4 mt-5"
+        className="flex justify-start items-center gap-4 mt-0 mb-5 lg:mt-5"
       >
         <ChevronLeft />
         <h2 className="text-2xl font-medium gap-4">Terms & Conditions Edit</h2>
