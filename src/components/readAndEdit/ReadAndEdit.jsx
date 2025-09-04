@@ -89,7 +89,7 @@ const ReadAndEdit = ({ title, fetchUrl, updateUrl = "null" }) => {
           </h1>
 
           {/* Quill Editor */}
-          <div className="border border-red-500 rounded-lg overflow-hidden h-[calc(100%-120px)] ">
+          <div className="border  rounded-lg overflow-hidden h-[calc(100%-120px)] ">
             <ReactQuill
               theme="snow"
               value={content}
