@@ -36,7 +36,7 @@ const SettingsPage = () => {
     { path: "/settings/personal-information", label: "Personal Information" },
     { label: "Change Password" },
     { path: "/settings/terms-and-conditions", label: "Terms & Condition" },
-    { path: "/settings/privacy-policy", label: "Privacy Policy" },
+    { path: "/settings/privacy-policy", label: "Privacy & Policy" },
     { path: "/settings/trust-and-safety", label: "Trust & Safety" },
   ];
 
