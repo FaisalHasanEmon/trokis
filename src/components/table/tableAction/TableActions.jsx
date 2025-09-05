@@ -14,7 +14,7 @@ const TableActions = ({ user, dataOf }) => {
   const [isPdfMode, setIsPdfMode] = useState(false);
 
   const handleInfoClick = () => {
-    if (dataOf === "support") return navigate("/support/contact");
+    if (dataOf.toLowerCase() === "support") return navigate("/support/contact");
     setSelectedUser(user);
     setIsModalOpen(true);
   };
