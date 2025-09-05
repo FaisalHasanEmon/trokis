@@ -1,4 +1,4 @@
-import TableActions from "./TableActions";
+import TableActions from "./tableAction/TableActions";
 
 const Table = ({ dataOf = "Not Defined", data = [] }) => {
   return (
