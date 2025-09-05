@@ -82,14 +82,14 @@ const Categories = () => {
         </h1>
         <button
           onClick={handleAddCategory}
-          className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm sm:text-base"
+          className="bg-black text-white   px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm sm:text-base"
         >
           Add Category
         </button>
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
         {categories.map((category) => (
           <div
             key={category.id}
@@ -106,7 +106,7 @@ const Categories = () => {
             </h3>
 
             {/* Action Buttons */}
-            <div className="flex gap-2 sm:gap-3">
+            <div className="flex gap-2 sm:gap-3 justify-center items-center">
               <button
                 onClick={() => handleEdit(category.id)}
                 className="flex-1 bg-black text-white py-2 px-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 text-xs sm:text-sm font-medium"
