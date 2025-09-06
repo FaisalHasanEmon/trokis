@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Edit3, ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PersonalInformation = () => {
   const [edit, setEdit] = useState(true);
@@ -9,7 +9,7 @@ const PersonalInformation = () => {
     email: "janecooper@gmail.com",
     phone: "30059722",
   });
-  const navigate = useNavigate();
+
   const handleEdit = () => {
     setEdit(!edit);
   };
@@ -32,9 +32,9 @@ const PersonalInformation = () => {
           {/* Header */}
           <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200 border ">
             <div className="text-lg font-medium text-gray-900 flex justify-start items-center gap-5 ">
-              <button onClick={() => navigate(-1)}>
+              <Link to="/settings">
                 <ArrowLeft size={24} className="text-black" />
-              </button>
+              </Link>
               <p>Personal Information</p>
             </div>
             <button
