@@ -1,5 +1,4 @@
 import { PanelRightClose } from "lucide-react";
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const SideBar = ({ isOpen, onToggle }) => {
@@ -62,7 +61,7 @@ const SideBar = ({ isOpen, onToggle }) => {
       link: "/settings",
     },
   ];
-  // console.log(isOpen);
+
   return (
     <>
       {/* For laptop and desktop devices */}
