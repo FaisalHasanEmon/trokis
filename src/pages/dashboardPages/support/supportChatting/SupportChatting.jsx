@@ -1,4 +1,4 @@
-import { ChevronLeft, Menu, Send } from "lucide-react";
+import { ChevronLeft, Send } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -80,6 +80,7 @@ const SupportChatting = () => {
 
   const notificationRef = useRef(null);
   const notificationBtnRef = useRef(null);
+  const chatEndRef = useRef(null);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -98,14 +99,14 @@ const SupportChatting = () => {
       if (
         showNotifications &&
         notificationRef.current &&
-        !notificationRef.current.contains(event.target) // NOT scrolling inside dropdown
+        !notificationRef.current.contains(event.target)
       ) {
         setShowNotifications(false);
       }
     };
 
     window.addEventListener("click", handleOutsideClick);
-    window.addEventListener("scroll", handleScroll, true); // Use capture phase to detect scroll in any element
+    window.addEventListener("scroll", handleScroll, true);
 
     return () => {
       window.removeEventListener("click", handleOutsideClick);
@@ -116,59 +117,81 @@ const SupportChatting = () => {
   const handleMessage = (e) => {
     e.preventDefault();
     const newMessage = e.target.message.value.trim();
-    if (newMessage === "") return; // prevent empty messages
-    setMessages((prev) => [...prev, newMessage]);
-    e.target.reset(); // clear input field
+    if (newMessage === "") return;
+    setMessages((prev) => [...prev, { text: newMessage, sender: "me" }]);
+    e.target.reset();
   };
+
+  // Auto scroll to bottom when new message comes
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   const Messages = () => {
+    const latestMessages = [...messages].reverse();
     return (
-      <div className="w-full flex flex-col gap-2 p-2">
-        {messages.map((msg, index) => (
-          <div key={index} className="w-full flex justify-end items-center">
-            <p className="bg-blue-500 text-white px-4 py-2 rounded-lg">{msg}</p>
+      <div className="w-full flex flex-col-reverse gap-2 p-2">
+        {latestMessages.map((msg, index) => (
+          <div
+            key={index}
+            className={`w-full flex ${
+              msg.sender === "me" ? "justify-end" : "justify-start"
+            } items-center`}
+          >
+            <p
+              className={`px-4 py-2 rounded-lg max-w-[75%] break-words ${
+                msg.sender === "me"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-800"
+              }`}
+            >
+              {msg.text}
+            </p>
           </div>
         ))}
+        <div ref={chatEndRef}></div>
       </div>
     );
   };
 
   return (
-    <div className="bg-[#F2F5F7] h-screen">
+    <div className="bg-[#F2F5F7] h-screen flex flex-col">
       {/* Navbar */}
-      <nav className="mt-0 fixed left-0 top-0 lg:block py-3  z-50 lg:relative w-full">
-        <div className="container mx-auto px-5 flex justify-between items-center text-[#333333]">
+      <nav className="mt-0 fixed left-0 top-0 lg:block py-3 z-50 lg:relative w-full">
+        <div className="container mx-auto px-3 sm:px-0 flex justify-between items-center text-[#333333]">
           {/* Hidden back link */}
-          <div className="block  lg:hidden  border border-[#333333] rounded-lg py-2 px-3">
+          <div className="block lg:hidden border border-[#333333] rounded-lg py-2 px-3">
             <Link
               to="/support"
               className="flex justify-center items-center gap-2"
             >
               <ChevronLeft size={16} />
-              <p className="text-[16px] ">Back</p>
+              <p className="text-sm sm:text-base">Back</p>
             </Link>
           </div>
+
           {/* Logo For Large Device */}
-          <div className="hidden lg:block ">
+          <div className="hidden lg:block">
             <img
               src="/Logo/contactPageLogo.png"
-              className="w-[120px]"
+              className="w-[90px] sm:w-[120px]"
               alt="Logo"
             />
           </div>
 
           {/* Right Section */}
-          <div className="flex   items-center gap-4 md:gap-8">
+          <div className="flex items-center gap-3 sm:gap-6 md:gap-8">
             {/* Notification Icon */}
             <div className="relative">
               <button ref={notificationBtnRef} onClick={handleNotification}>
                 <img
                   src="/NavbarIcons/notification.png"
-                  className="w-5 h-5 md:w-6 md:h-6"
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                   alt="Notification Icon"
                 />
                 {notifications.length > 0 && (
-                  <div className="absolute -top-1 -right-1 w-4 h-4 md:w-[18px] md:h-[18px] rounded-full bg-[#333333] text-white flex justify-center items-center">
-                    <p className="text-[10px] md:text-[10px]">
+                  <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-[18px] sm:h-[18px] rounded-full bg-[#333333] text-white flex justify-center items-center">
+                    <p className="text-[9px] sm:text-[10px]">
                       {notifications.length}
                     </p>
                   </div>
@@ -179,7 +202,7 @@ const SupportChatting = () => {
               {showNotifications && (
                 <div
                   ref={notificationRef}
-                  className="absolute right-0 mt-3 w-80 max-h-96 overflow-y-auto bg-white border rounded-lg shadow-lg shadow-gray-500 z-50"
+                  className="absolute right-0 mt-3 w-72 sm:w-80 max-h-96 overflow-y-auto bg-white border rounded-lg shadow-lg shadow-gray-500 z-50"
                 >
                   <div className="p-3 border-b">
                     <h3 className="font-semibold text-base">Notifications</h3>
@@ -210,7 +233,7 @@ const SupportChatting = () => {
               onClick={handleDropDown}
             >
               {user?.profileImage && (
-                <figure className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-clip">
+                <figure className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full overflow-clip">
                   <img
                     src={user?.profileImage}
                     className="w-full h-full object-cover object-top"
@@ -245,45 +268,50 @@ const SupportChatting = () => {
           </div>
         )}
       </nav>
-      {/* Main Content Content */}
-      <main className="container px-5 mx-auto relative flex justify-center items-center">
-        <div className="absolute hidden lg:block left-0 top-0 border border-[#333333] rounded-lg py-2 px-6">
+
+      {/* Main Content */}
+      <main className="relative container px-3 sm:px-5 mx-auto flex-1 flex justify-center items-center ">
+        <div className="hidden lg:block lg:absolute z-50  left-0 top-0 border border-[#333333] rounded-lg py-2 px-4 sm:px-6">
           <Link
             to="/support"
             className="flex justify-center items-center gap-2.5"
           >
             <ChevronLeft size={16} />
-            <p className="text-[16px] ">Back</p>
+            <p className="text-sm sm:text-base">Back</p>
           </Link>
         </div>
+
         {/* Chatting Interface */}
-        <div className="w-5xl mt-[70px] lg:mt-2.5 h-[calc(100vh-90px)] border flex flex-col justify-between items-center relative rounded-lg overflow-clip ">
-          <div className="absolute top-0 left-0 bg-[#FFFFFF]  w-full p-2.5 rounded-lg flex justify-start items-center gap-4 ">
-            <figure className="w-[60px] h-[60px] rounded-full  overflow-clip">
+        <div className="w-full sm:w-[95%] md:w-[85%] lg:w-5xl mt-[70px] lg:mt-2.5 h-[calc(100vh-90px)] flex flex-col justify-between items-center relative rounded-lg overflow-clip">
+          <div className="absolute top-0 left-0 bg-[#FFFFFF] w-full p-2.5 rounded-lg flex justify-start items-center gap-3 sm:gap-4">
+            <figure className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-full overflow-clip">
               <img
                 src="/supportChattingPageImages/modelImage.png"
                 alt="/DriverImage"
               />
             </figure>
-            <p className="text-[16px]">Banedict Fring Dron online</p>
+            <p className="text-sm sm:text-[16px]">Banedict Fring Dron online</p>
           </div>
+
           {/* Chatting messages */}
-          <div className=" h-full w-full overflow-y-scroll">
-            <Messages></Messages>
+          <div className="h-full w-full overflow-y-scroll flex flex-col-reverse mt-[65px] sm:mt-[75px]">
+            <Messages />
           </div>
+
           {/* Chat Input */}
-          <div className="  w-full">
-            <form onSubmit={handleMessage} className="relative w-full border">
+          <div className="w-full mb-6 sm:mb-8 px-1 sm:px-0">
+            <form onSubmit={handleMessage} className="relative w-full">
               <input
                 type="text"
-                className="bg-white w-full py-5 rounded-4xl px-5"
+                className="bg-white w-full py-4 sm:py-5 rounded-4xl px-4 sm:px-5 focus:border-red-500 outline-none"
                 name="message"
+                placeholder="Type your message..."
               />
               <button
                 type="submit"
-                className="rotate-45 absolute right-10 top-5"
+                className="rotate-45 border-gray-400 absolute right-6 sm:right-10 top-3 sm:top-5 text-[#008CFF]"
               >
-                <Send></Send>
+                <Send />
               </button>
             </form>
           </div>
