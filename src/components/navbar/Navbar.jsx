@@ -1,26 +1,125 @@
 // import { Menu } from "lucide-react";
-// import { useState } from "react";
+// import { useState, useEffect, useRef } from "react";
 
 // const Navbar = ({ isOpen, onToggle }) => {
 //   const [showDropDown, setDropDown] = useState(false);
+//   const [showNotifications, setShowNotifications] = useState(false);
+
 //   const handleDropDown = () => setDropDown(!showDropDown);
+//   const handleNotification = () => setShowNotifications(!showNotifications);
 
 //   const user = {
 //     name: "Jane Cooper",
 //     profileImage: "/NavbarIcons/user.png",
 //   };
 
-//   const notification = [{ id: 1, notification: "Hello World" }];
+//   const notifications = [
+//     {
+//       id: 1,
+//       title: "New Message",
+//       subtitle: "You have received a new message",
+//       time: "2 min ago",
+//     },
+//     {
+//       id: 2,
+//       title: "Payment Successful",
+//       subtitle: "Your payment has been processed",
+//       time: "10 min ago",
+//     },
+//     {
+//       id: 3,
+//       title: "System Update",
+//       subtitle: "Scheduled maintenance at midnight",
+//       time: "30 min ago",
+//     },
+//     {
+//       id: 4,
+//       title: "Friend Request",
+//       subtitle: "John Doe sent you a request",
+//       time: "1 hr ago",
+//     },
+//     {
+//       id: 5,
+//       title: "Reminder",
+//       subtitle: "Meeting at 3 PM today",
+//       time: "2 hrs ago",
+//     },
+//     {
+//       id: 6,
+//       title: "Discount Offer",
+//       subtitle: "Get 20% off your next purchase",
+//       time: "3 hrs ago",
+//     },
+//     {
+//       id: 7,
+//       title: "Security Alert",
+//       subtitle: "New login from Chrome browser",
+//       time: "5 hrs ago",
+//     },
+//     {
+//       id: 8,
+//       title: "New Comment",
+//       subtitle: "Someone commented on your post",
+//       time: "6 hrs ago",
+//     },
+//     {
+//       id: 9,
+//       title: "Subscription",
+//       subtitle: "Your subscription is about to end",
+//       time: "Yesterday",
+//     },
+//     {
+//       id: 10,
+//       title: "Welcome!",
+//       subtitle: "Thanks for joining us",
+//       time: "2 days ago",
+//     },
+//   ];
+
+//   const notificationRef = useRef(null);
+//   const notificationBtnRef = useRef(null);
+
+//   useEffect(() => {
+//     const handleOutsideClick = (event) => {
+//       if (
+//         showNotifications &&
+//         notificationRef.current &&
+//         !notificationRef.current.contains(event.target) &&
+//         notificationBtnRef.current &&
+//         !notificationBtnRef.current.contains(event.target)
+//       ) {
+//         setShowNotifications(false);
+//       }
+//     };
+
+//     const handleScroll = (event) => {
+//       if (
+//         showNotifications &&
+//         notificationRef.current &&
+//         !notificationRef.current.contains(event.target) // NOT scrolling inside dropdown
+//       ) {
+//         setShowNotifications(false);
+//       }
+//     };
+
+//     window.addEventListener("click", handleOutsideClick);
+//     window.addEventListener("scroll", handleScroll, true); // Use capture phase to detect scroll in any element
+
+//     return () => {
+//       window.removeEventListener("click", handleOutsideClick);
+//       window.removeEventListener("scroll", handleScroll, true);
+//     };
+//   }, [showNotifications]);
 
 //   return (
 //     <>
 //       {isOpen && (
-//         <nav className="mt-0 lg:mt-5 fixed left-0 top-0 lg:block bg-white py-3 px-5 shadow z-50 lg:relative w-full">
+//         <nav className="mt-0 lg:mt-5  fixed left-0 top-0 lg:block bg-white shadow-sm py-3 px-5  z-50 lg:relative w-full rounded-lg">
 //           <div className="flex justify-between items-center text-[#333333]">
 //             {/* Welcome Message */}
 //             <div className="lg:hidden">
 //               <button onClick={onToggle}>
-//                 <Menu></Menu>
+//                 <Menu />
 //               </button>
 //             </div>
 //             <div className="hidden lg:block">
@@ -33,18 +132,54 @@
 //             {/* Right Section */}
 //             <div className="flex items-center gap-4 md:gap-8">
 //               {/* Notification Icon */}
-//               <figure className="relative">
-//                 <img
-//                   src="/NavbarIcons/notification.png"
-//                   className="w-5 h-5 md:w-6 md:h-6"
-//                   alt="Notification Icons"
-//                 />
-//                 {notification.length > 0 && (
-//                   <div className="absolute -top-1 -right-1 w-4 h-4 md:w-[18px] md:h-[18px] rounded-full bg-[#333333] text-white flex justify-center items-center">
-//                     <p className="text-[10px] md:text-[10px]">12</p>
+//               <div className="relative">
+//                 <button ref={notificationBtnRef} onClick={handleNotification}>
+//                   <img
+//                     src="/NavbarIcons/notification.png"
+//                     className="w-5 h-5 md:w-6 md:h-6"
+//                     alt="Notification Icon"
+//                   />
+//                   {notifications.length > 0 && (
+//                     <div className="absolute -top-1 -right-1 w-4 h-4 md:w-[18px] md:h-[18px] rounded-full bg-[#333333] text-white flex justify-center items-center">
+//                       <p className="text-[10px] md:text-[10px]">
+//                         {notifications.length}
+//                       </p>
+//                     </div>
+//                   )}
+//                 </button>
+
+//                 {/* Notifications Dropdown */}
+//                 {showNotifications && (
+//                   <div
+//                     ref={notificationRef}
+//                     className="absolute top-10 -right-18 lg:right-0 mt-3 w-72 lg:w-80 max-h-96 overflow-y-auto bg-white  rounded-lg shadow-lg shadow-gray-500 z-50 "
+//                   >
+//                     <div className="p-3 shadow-sm sticky top-0 bg-white">
+//                       <h3 className="font-semibold text-base text-center">
+//                         Notifications
+//                       </h3>
+//                     </div>
+//                     <ul className="space-y-2 flex flex-col justify-center items-center py-2">
+//                       {notifications.slice(0, 10).map((item) => (
+//                         <li
+//                           key={item.id}
+//                           className="px-4 py-3 hover:bg-gray-100 cursor-pointer transition shadow-sm w-[90%] rounded-lg"
+//                         >
+//                           <h4 className="text-sm font-semibold">
+//                             {item.title}
+//                           </h4>
+//                           <p className="text-xs text-gray-600 truncate">
+//                             {item.subtitle}
+//                           </p>
+//                           <span className="text-[10px] text-gray-400">
+//                             {item.time}
+//                           </span>
+//                         </li>
+//                       ))}
+//                     </ul>
 //                   </div>
 //                 )}
-//               </figure>
+//               </div>
 
 //               {/* Profile Section */}
 //               <div
@@ -78,7 +213,7 @@
 
 //           {/* Dropdown Menu */}
 //           {showDropDown && (
-//             <div className="absolute right-0 mt-5 w-48 bg-white border rounded-lg shadow-lg shadow-gray-500 p-4 ">
+//             <div className="absolute right-0 mt-5 w-48 bg-white border rounded-lg shadow-lg shadow-gray-500 p-4">
 //               <ul className="space-y-2 text-sm">
 //                 <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>
 //                 <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>
@@ -100,9 +235,6 @@ import { useState, useEffect, useRef } from "react";
 const Navbar = ({ isOpen, onToggle }) => {
   const [showDropDown, setDropDown] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
-
-  const handleDropDown = () => setDropDown(!showDropDown);
-  const handleNotification = () => setShowNotifications(!showNotifications);
 
   const user = {
     name: "Jane Cooper",
@@ -172,8 +304,15 @@ const Navbar = ({ isOpen, onToggle }) => {
     },
   ];
 
+  // Refs for both dropdowns
   const notificationRef = useRef(null);
   const notificationBtnRef = useRef(null);
+  const profileRef = useRef(null);
+  const profileBtnRef = useRef(null);
+
+  // Toggle handlers
+  const handleNotification = () => setShowNotifications(!showNotifications);
+  const handleDropDown = () => setDropDown(!showDropDown);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -186,31 +325,49 @@ const Navbar = ({ isOpen, onToggle }) => {
       ) {
         setShowNotifications(false);
       }
+
+      if (
+        showDropDown &&
+        profileRef.current &&
+        !profileRef.current.contains(event.target) &&
+        profileBtnRef.current &&
+        !profileBtnRef.current.contains(event.target)
+      ) {
+        setDropDown(false);
+      }
     };
 
     const handleScroll = (event) => {
       if (
         showNotifications &&
         notificationRef.current &&
-        !notificationRef.current.contains(event.target) // NOT scrolling inside dropdown
+        !notificationRef.current.contains(event.target)
       ) {
         setShowNotifications(false);
+      }
+
+      if (
+        showDropDown &&
+        profileRef.current &&
+        !profileRef.current.contains(event.target)
+      ) {
+        setDropDown(false);
       }
     };
 
     window.addEventListener("click", handleOutsideClick);
-    window.addEventListener("scroll", handleScroll, true); // Use capture phase to detect scroll in any element
+    window.addEventListener("scroll", handleScroll, true);
 
     return () => {
       window.removeEventListener("click", handleOutsideClick);
       window.removeEventListener("scroll", handleScroll, true);
     };
-  }, [showNotifications]);
+  }, [showNotifications, showDropDown]);
 
   return (
     <>
       {isOpen && (
-        <nav className="mt-0 lg:mt-5  fixed left-0 top-0 lg:block bg-white shadow-sm py-3 px-5  z-50 lg:relative w-full rounded-lg">
+        <nav className="mt-0 lg:mt-5 fixed left-0 top-0 lg:block bg-white shadow-sm py-3 px-5 z-50 lg:relative w-full rounded-lg">
           <div className="flex justify-between items-center text-[#333333]">
             {/* Welcome Message */}
             <div className="lg:hidden">
@@ -248,16 +405,18 @@ const Navbar = ({ isOpen, onToggle }) => {
                 {showNotifications && (
                   <div
                     ref={notificationRef}
-                    className="absolute right-0 mt-3 w-80 max-h-96 overflow-y-auto bg-white border rounded-lg shadow-lg shadow-gray-500 z-50"
+                    className="absolute top-10 -right-18 lg:right-0 mt-3 w-72 lg:w-80 max-h-96 overflow-y-auto bg-white rounded-lg shadow-lg shadow-gray-500 z-50"
                   >
-                    <div className="p-3 border-b">
-                      <h3 className="font-semibold text-base">Notifications</h3>
+                    <div className="p-3 shadow-sm sticky top-0 bg-white">
+                      <h3 className="font-semibold text-base text-center">
+                        Notifications
+                      </h3>
                     </div>
-                    <ul className="divide-y">
+                    <ul className="space-y-2 flex flex-col justify-center items-center py-2">
                       {notifications.slice(0, 10).map((item) => (
                         <li
                           key={item.id}
-                          className="px-4 py-3 hover:bg-gray-100 cursor-pointer transition"
+                          className="px-4 py-3 hover:bg-gray-100 cursor-pointer transition shadow-sm w-[90%] rounded-lg"
                         >
                           <h4 className="text-sm font-semibold">
                             {item.title}
@@ -277,6 +436,7 @@ const Navbar = ({ isOpen, onToggle }) => {
 
               {/* Profile Section */}
               <div
+                ref={profileBtnRef}
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={handleDropDown}
               >
@@ -307,7 +467,10 @@ const Navbar = ({ isOpen, onToggle }) => {
 
           {/* Dropdown Menu */}
           {showDropDown && (
-            <div className="absolute right-0 mt-5 w-48 bg-white border rounded-lg shadow-lg shadow-gray-500 p-4">
+            <div
+              ref={profileRef}
+              className="absolute right-0 mt-5 w-48 bg-white  rounded-lg p-4 shadow-lg shadow-gray-500"
+            >
               <ul className="space-y-2 text-sm">
                 <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>
                 <li className="hover:bg-gray-100 px-3 py-2 rounded">Option</li>

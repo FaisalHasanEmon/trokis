@@ -2,15 +2,15 @@ import TableActions from "./tableAction/TableActions";
 
 const Table = ({ dataOf = "Not Defined", data = [] }) => {
   return (
-    <div className="rounded-xl h-[calc(100vh-150px)] overflow-clip">
-      <div className="p-5  border-gray-100">
+    <div className="rounded-xl   sm:mt-10 lg:mt-0 h-[calc(100vh-150px)] overflow-clip">
+      <div className="p-5  border-gray-100   rounded-b-xl sticky ">
         <h3 className="text-lg md:text-2xl font-semibold text-gray-900">
           {dataOf}
         </h3>
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden sm:block overflow-x-auto px-5 h-full">
+      <div className="hidden sm:block overflow-y-scroll  px-5 h-full">
         <table className="w-full ">
           <thead className="bg-black sticky top-0">
             <tr>
@@ -59,9 +59,9 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
       </div>
 
       {/* Mobile Cards */}
-      <div className="sm:hidden">
+      <div className="sm:hidden h-full overflow-y-scroll  ">
         {data.map((user, index) => (
-          <div key={user.id} className="p-4 border-b last:border-b-0">
+          <div key={user.id} className="px-2 py-3 shadow-sm mb-1 bg-white">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <span className="text-sm font-medium text-gray-900">
