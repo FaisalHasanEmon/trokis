@@ -21,7 +21,7 @@ const PersonalInformation = () => {
     }));
   };
   const handleUpdatePersonalInfo = () => {
-    console.log(formData);
+    // console.log(formData);
   };
 
   return (
