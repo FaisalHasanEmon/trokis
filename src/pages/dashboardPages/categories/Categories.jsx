@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Categories = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -6,15 +6,16 @@ const Categories = () => {
   const [categoryName, setCategoryName] = useState("");
   const [categoryIcon, setCategoryIcon] = useState(null);
   const [editingCategoryId, setEditingCategoryId] = useState(null); // Track which category is being edited
+  const [categories, setCategories] = useState([]);
 
-  // Sample data for categories - replace with actual data
-  const categories = Array(15)
-    .fill(null)
-    .map((_, index) => ({
-      id: index + 1,
-      name: "Home Clean",
-      image: null, // placeholder for actual images
-    }));
+  // Fetching Data
+  useEffect(() => {
+    fetch("/fakeAPIs/categories.json")
+      .then((res) => res.json())
+      .then((data) => setCategories([...data]));
+  }, []);
+
+  console.log(categories);
 
   const handleAddCategory = () => {
     setIsModalOpen(true);
@@ -92,17 +93,23 @@ const Categories = () => {
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
         {categories.map((category) => (
           <div
-            key={category.id}
-            className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow duration-200"
+            key={category?.id}
+            className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow duration-200 "
           >
             {/* Category Image Placeholder */}
-            <div className="w-full aspect-square bg-gray-300 rounded-full mb-4 flex items-center justify-center">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-400 rounded-full"></div>
+            <div className="w-full aspect-square bg-gray-300 rounded-full mb-4 flex items-center justify-center overflow-clip ">
+              {/* <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-400 rounded-full overflow-clip"> */}
+              <img
+                src={category?.image}
+                alt="Category Image"
+                className="w-full h-full object-cover"
+              />
+              {/* </div> */}
             </div>
 
             {/* Category Name */}
             <h3 className="text-center text-gray-800 font-medium mb-4 text-sm sm:text-base">
-              {category.name}
+              {category?.name}
             </h3>
 
             {/* Action Buttons */}
