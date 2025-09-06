@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "Deep Home Clean",
+    "image": "https://i.ibb.co.com/mTHgj2b/william-brown.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Office Sanitization",
+    "image": "https://i.ibb.co.com/nPTyPSy/takahiro-yamamoto.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Carpet Shampoo",
+    "image": "https://i.ibb.co.com/5hx0ssp/sofia-silva.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Window Washing",
+    "image": "https://i.ibb.co.com/6Rst5hR/rajat-singh.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Floor Mopping",
+    "image": "https://i.ibb.co.com/zh18K5x/emily-johnson.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Kitchen Degrease",
+    "image": "https://i.ibb.co.com/mTHgj2b/william-brown.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Bathroom Disinfect",
+    "image": "https://i.ibb.co.com/5hx0ssp/sofia-silva.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Outdoor Patio Sweep",
+    "image": "https://i.ibb.co.com/5hx0ssp/sofia-silva.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Car Wash Exterior",
+    "image": "https://i.ibb.co.com/5hx0ssp/sofia-silva.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Laundry Fold & Organize",
+    "image": "https://i.ibb.co.com/nPTyPSy/takahiro-yamamoto.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Move-in Deep Clean",
+    "image": "https://i.ibb.co.com/nPTyPSy/takahiro-yamamoto.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Post-Construction Clean",
+    "image": "https://i.ibb.co.com/nPTyPSy/takahiro-yamamoto.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Pressure Wash Deck",
+    "image": "https://i.ibb.co.com/mTHgj2b/william-brown.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Gutter Clearing",
+    "image": "https://i.ibb.co.com/mTHgj2b/william-brown.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Disinfection Spray",
+    "image": "https://i.ibb.co.com/nPTyPSy/takahiro-yamamoto.jpg"
+  }
+]
