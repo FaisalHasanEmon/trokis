@@ -76,7 +76,7 @@ const Driver = () => {
     },
   ];
   return (
-    <section className="mt-6 border rounded-[12px] overflow-clip">
+    <section className="mt-6 bg-white shadow-sm rounded-[8px] overflow-clip">
       <Table dataOf="Driver" data={recentUsers}></Table>
     </section>
   );

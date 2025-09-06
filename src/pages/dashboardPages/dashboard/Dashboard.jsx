@@ -90,7 +90,7 @@ const Dashboard = () => {
         {dashboardData?.map((item) => (
           <div
             key={item?.id}
-            className=" rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm border flex flex-col justify-center items-center bg-white border-black text-center"
+            className=" rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 shadow-sm flex flex-col justify-center items-center bg-white text-center"
           >
             <h3 className="text-xs sm:text-2xl font-medium text-black mb-1 sm:mb-2 grow-1">
               {item?.dataInfoType}
@@ -104,8 +104,8 @@ const Dashboard = () => {
       </div>
 
       {/* Overview Chart */}
-      <div className="py-6  mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+      <div className="py-6  mb-8 bg-white  rounded-lg shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 px-5">
           <h3 className="text-lg md:text-2xl font-semibold text-gray-900 mb-2 sm:mb-0">
             Overview
           </h3>
@@ -127,7 +127,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="h-64 md:h-80 ">
+        <div className="h-64 md:h-80 w-full ">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
               data={chartData}
@@ -158,7 +158,9 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Users Table */}
-      <Table dataOf="Recent Users" data={recentUsers}></Table>
+      <div className="bg-white rounded-lg shadow-sm">
+        <Table dataOf="Recent Users" data={recentUsers}></Table>
+      </div>
     </div>
   );
 };

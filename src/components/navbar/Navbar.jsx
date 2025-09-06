@@ -210,7 +210,7 @@ const Navbar = ({ isOpen, onToggle }) => {
   return (
     <>
       {isOpen && (
-        <nav className="mt-0 lg:mt-5 fixed left-0 top-0 lg:block bg-white py-3 px-5 shadow z-50 lg:relative w-full">
+        <nav className="mt-0 lg:mt-5  fixed left-0 top-0 lg:block bg-white shadow-sm py-3 px-5  z-50 lg:relative w-full rounded-lg">
           <div className="flex justify-between items-center text-[#333333]">
             {/* Welcome Message */}
             <div className="lg:hidden">

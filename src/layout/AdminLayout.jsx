@@ -13,15 +13,15 @@ const AdminLayout = () => {
   };
 
   return (
-    <main className=" w-dvw font-montserrat ">
+    <main className=" w-dvw font-montserrat bg-[#F2F5F7]">
       <section className="flex h-screen overflow-hidden w-full">
         {/*1 left sidebar */}
         {/* <div className="hidden sm:block"> */}
-        <div className="">
+        <div>
           <SideBar isOpen={isSidebarOpen} onToggle={toggleLayout}></SideBar>
         </div>
         {/* 2 right site content */}
-        <div className="w-full  px-5 overflow-y-scroll bg-[#F2F5F7] pb-16 pt-28 lg:pt-0 ">
+        <div className="w-full  ml-5 mr-0 pr-5 pl-0 overflow-y-scroll   pt-28 lg:pt-0 ">
           <Navbar isOpen={isNavbarOpen} onToggle={toggleLayout}></Navbar>
           <Outlet></Outlet>
         </div>

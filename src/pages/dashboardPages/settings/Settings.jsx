@@ -153,7 +153,7 @@ const SettingsPage = () => {
   return (
     <div className="bg-gray-100 mt-9">
       {/* SETTINGS BUTTONS */}
-      <div className="w-full bg-white shadow-md rounded-lg py-[125px] px-5 sm:px-[50px] lg:px-[100px]">
+      <div className="w-full bg-white shadow-sm rounded-lg py-[125px] px-5 sm:px-[50px] lg:px-[100px]">
         {pages.map((item, index) =>
           item?.label.toLowerCase().includes("password") ? (
             <button
@@ -179,7 +179,7 @@ const SettingsPage = () => {
        * MODAL: CHANGE PASSWORD
        * ----------------------------- */}
       {isChangePasswordModalOpen && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-xs flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg w-full max-w-md mx-auto">
             {/* Header */}
             <div className="flex items-center gap-3 p-4 pb-5 ">

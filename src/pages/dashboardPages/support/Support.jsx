@@ -64,9 +64,28 @@ const Support = () => {
       email: "abc@email.com",
       phone: "+1 2746478994",
     },
+    {
+      id: 11,
+      name: "Jane Cooper",
+      email: "abc@email.com",
+      phone: "+1 2746478994",
+    },
+    {
+      id: 12,
+      name: "Jane Cooper",
+      email: "abc@email.com",
+      phone: "+1 2746478994",
+    },
+    {
+      id: 13,
+      name: "Jane Cooper",
+      email: "abc@email.com",
+      phone: "+1 2746478994",
+    },
   ];
+
   return (
-    <section className="mt-6 border rounded-[12px] overflow-clip">
+    <section className="mt-6 bg-white shadow-sm rounded-[8px] overflow-clip">
       <Table dataOf="Support" data={recentUsers}></Table>
     </section>
   );

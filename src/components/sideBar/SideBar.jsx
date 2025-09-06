@@ -67,7 +67,7 @@ const SideBar = ({ isOpen, onToggle }) => {
     <>
       {/* For laptop and desktop devices */}
       <section className="hidden lg:block">
-        <aside className=" w-[260px] bg-[#FFFFFF]  flex flex-col justify-between items-center h-dvh px-2 pt-7.5">
+        <aside className=" w-[260px] bg-[#FFFFFF] shadow-sm flex flex-col justify-between items-center h-dvh px-2 pt-7.5">
           {/* Logo */}
           <div>
             <Link to="/">
@@ -82,10 +82,10 @@ const SideBar = ({ isOpen, onToggle }) => {
                   <NavLink
                     to={navButton?.link}
                     className={({ isActive }) =>
-                      `flex justify-start items-center gap-2.5 py-3 px-5  ${
+                      `flex justify-start items-center gap-2.5 py-3 px-5 hover:border-white hover:shadow-[0px_0px_8px_0px_rgba(0,0,0,0.1)]  hover:rounded-4xl hover:backdrop-blur-md rounded-4xl${
                         isActive
-                          ? "rounded-4xl bg-black text-white"
-                          : "bg-white text-black"
+                          ? " bg-black text-white "
+                          : "bg-white text-black "
                       }`
                     }
                   >
@@ -143,7 +143,7 @@ const SideBar = ({ isOpen, onToggle }) => {
             <div className=" py-2.5 ">
               <ul className="space-y-3">
                 {navButtons?.map((navButton) => (
-                  <li key={navButton?.id}>
+                  <li key={navButton?.id} className="">
                     <NavLink
                       to={navButton?.link}
                       onClick={onToggle}
@@ -151,7 +151,7 @@ const SideBar = ({ isOpen, onToggle }) => {
                         `flex justify-start items-center gap-2.5 py-3 px-5  ${
                           isActive
                             ? "rounded-4xl bg-black text-white"
-                            : "bg-white text-black"
+                            : "bg-white  text-black hover:shadow-sm"
                         }`
                       }
                     >

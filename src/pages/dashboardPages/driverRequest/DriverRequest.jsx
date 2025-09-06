@@ -16,10 +16,7 @@ const DriverRquest = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-6">
           {/* Render 6 identical cards as shown in the image */}
           {[...Array(6)].map((_, cardIndex) => (
-            <div
-              key={cardIndex}
-              className="bg-white rounded-xl shadow-lg border border-gray-100 p-8"
-            >
+            <div key={cardIndex} className="bg-white rounded-lg shadow-sm  p-8">
               {/* Driver Profile Section - Centered */}
               <div className="flex flex-col items-center text-center mb-8">
                 <div className="relative mb-4">
@@ -82,10 +79,10 @@ const DriverRquest = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-4">
-                <button className="flex-1 bg-black text-white py-3 px-6 rounded-xl font-semibold hover:bg-gray-800 transition-colors">
+                <button className="flex-1 bg-black text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                   Approve
                 </button>
-                <button className="flex-1 border-2 border-gray-300 text-gray-700 py-3 px-6 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
+                <button className="flex-1 border-2 border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
                   Decline
                 </button>
               </div>

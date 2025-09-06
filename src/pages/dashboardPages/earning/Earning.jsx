@@ -66,7 +66,7 @@ const Earning = () => {
     },
   ];
   return (
-    <section className="mt-6 border rounded-[12px] overflow-clip">
+    <section className="mt-6 bg-white shadow-sm rounded-[8px] overflow-clip">
       <Table dataOf="Earning" data={recentUsers}></Table>
     </section>
   );

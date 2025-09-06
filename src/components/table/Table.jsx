@@ -2,19 +2,19 @@ import TableActions from "./tableAction/TableActions";
 
 const Table = ({ dataOf = "Not Defined", data = [] }) => {
   return (
-    <div className="rounded-xl shadow-sm border overflow-hidden">
-      <div className="p-6 border-b border-gray-100">
+    <div className="rounded-xl h-[calc(100vh-150px)] overflow-clip">
+      <div className="p-5  border-gray-100">
         <h3 className="text-lg md:text-2xl font-semibold text-gray-900">
           {dataOf}
         </h3>
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden sm:block overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-black">
+      <div className="hidden sm:block overflow-x-auto px-5 h-full">
+        <table className="w-full ">
+          <thead className="bg-black sticky top-0">
             <tr>
-              <th className="px-6 py-4 text-center text-sm font-medium text-white">
+              <th className="px-6 py-4 text-center text-sm font-medium text-white rounded-tl-lg">
                 #SL
               </th>
               <th className="px-6 py-4 text-center text-sm font-medium text-white">
@@ -31,16 +31,16 @@ const Table = ({ dataOf = "Not Defined", data = [] }) => {
                   Role
                 </th>
               )}
-              <th className="px-6 py-4 text-center text-sm font-medium text-white">
+              <th className="px-6 py-4 text-center text-sm font-medium text-white rounded-tr-lg">
                 Action
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-gray-100 ">
             {data?.map((user, index) => (
               <tr
                 key={user.id}
-                className="hover:bg-gray-50 *:border-b *:px-6 *:py-4 *:text-center *:text-sm *:text-[#333333]"
+                className="hover:bg-gray-50  *:px-6 *:py-4 *:text-center *:text-sm *:text-[#333333] "
               >
                 <td>{index + 1}</td>
                 <td>{user?.name}</td>
