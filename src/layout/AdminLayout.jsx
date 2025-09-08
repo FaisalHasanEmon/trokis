@@ -21,7 +21,7 @@ const AdminLayout = () => {
           <SideBar isOpen={isSidebarOpen} onToggle={toggleLayout}></SideBar>
         </div>
         {/* 2 right site content */}
-        <div className="w-full  ml-5 mr-0 pr-5 pl-0 overflow-y-scroll   pt-12 lg:pt-0 ">
+        <div className="w-full  ml-5 mr-0 pr-5 pl-0 overflow-y-scroll   pt-18 lg:pt-0 ">
           <Navbar isOpen={isNavbarOpen} onToggle={toggleLayout}></Navbar>
           <Outlet></Outlet>
         </div>

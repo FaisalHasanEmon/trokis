@@ -8,7 +8,7 @@ const AuthContext = () => {
   const user = true;
   const login = async (email, password) => {
     setLoading(false);
-    console.log(email, password);
+    // console.log(email, password);
   };
 
   const value = {

@@ -15,8 +15,6 @@ const Categories = () => {
       .then((data) => setCategories([...data]));
   }, []);
 
-  console.log(categories);
-
   const handleAddCategory = () => {
     setIsModalOpen(true);
     setIsEditing(false);
@@ -37,7 +35,7 @@ const Categories = () => {
   };
 
   const handleDelete = (categoryId) => {
-    console.log("Delete category:", categoryId);
+    // console.log("Delete category:", categoryId);
     // Add your delete logic here
   };
 
@@ -51,17 +49,17 @@ const Categories = () => {
   const handleSubmitCategory = (e) => {
     e.preventDefault();
     if (isEditing) {
-      console.log("Updating category:", {
-        id: editingCategoryId,
-        name: categoryName,
-        icon: categoryIcon,
-      });
+      // console.log("Updating category:", {
+      //   id: editingCategoryId,
+      //   name: categoryName,
+      //   icon: categoryIcon,
+      // });
       // Add your update logic here
     } else {
-      console.log("Adding category:", {
-        name: categoryName,
-        icon: categoryIcon,
-      });
+      // console.log("Adding category:", {
+      //   name: categoryName,
+      //   icon: categoryIcon,
+      // });
       // Add your category creation logic here
     }
     handleCloseModal();

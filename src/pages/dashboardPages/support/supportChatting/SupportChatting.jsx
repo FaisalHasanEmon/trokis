@@ -270,8 +270,8 @@ const SupportChatting = () => {
       </nav>
 
       {/* Main Content */}
-      <main className="relative container px-3 sm:px-5 mx-auto flex-1 flex justify-center items-center ">
-        <div className="hidden lg:block lg:absolute z-50  left-0 top-0 border border-[#333333] rounded-lg py-2 px-4 sm:px-6">
+      <main className=" relative container px-3 sm:px-5 mx-auto flex-1 flex justify-center items-center ">
+        <div className="hidden lg:block lg:absolute z-50  left-0 top-0 shadow-sm hover:shadow-md bg-white/90 backdrop-blur-md rounded-lg py-2 px-4 sm:px-6">
           <Link
             to="/support"
             className="flex justify-center items-center gap-2.5"
@@ -282,15 +282,15 @@ const SupportChatting = () => {
         </div>
 
         {/* Chatting Interface */}
-        <div className="w-full sm:w-[95%] md:w-[85%] lg:w-5xl mt-[70px] lg:mt-2.5 h-[calc(100vh-90px)] flex flex-col justify-between items-center relative rounded-lg overflow-clip">
-          <div className="absolute top-0 left-0 bg-[#FFFFFF] w-full p-2.5 rounded-lg flex justify-start items-center gap-3 sm:gap-4">
+        <div className=" bg-white/50 backdrop-blur-3xl shadow-xs px-2 w-full sm:w-[95%] md:w-[85%] lg:w-5xl mt-[70px] lg:mt-0 h-[calc(100vh-90px)] flex flex-col justify-between items-center relative rounded-lg overflow-clip">
+          <div className=" absolute top-0 left-0 bg-[#FFFFFF] w-full p-2.5 rounded-lg flex justify-start items-center gap-3 sm:gap-4">
             <figure className="w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-full overflow-clip">
               <img
                 src="/supportChattingPageImages/modelImage.png"
                 alt="/DriverImage"
               />
             </figure>
-            <p className="text-sm sm:text-[16px]">Banedict Fring Dron online</p>
+            <p className="text-sm sm:text-[16px]">Banedict Fring Dron </p>
           </div>
 
           {/* Chatting messages */}
@@ -299,17 +299,17 @@ const SupportChatting = () => {
           </div>
 
           {/* Chat Input */}
-          <div className="w-full mb-6 sm:mb-8 px-1 sm:px-0">
+          <div className="w-full mb-6  sm:mb-8 px-1 sm:px-0">
             <form onSubmit={handleMessage} className="relative w-full">
               <input
                 type="text"
-                className="bg-white w-full py-4 sm:py-5 rounded-4xl px-4 sm:px-5 focus:border-red-500 outline-none"
+                className="bg-white w-full py-4 sm:py-5 rounded-4xl px-4 sm:px-5 focus:outline-gray-400 shadow-xs  "
                 name="message"
                 placeholder="Type your message..."
               />
               <button
                 type="submit"
-                className="rotate-45 border-gray-400 absolute right-6 sm:right-10 top-3 sm:top-5 text-[#008CFF]"
+                className="rotate-45 border-gray-400 absolute right-6 sm:right-10 top-4  sm:top-5 text-[#008CFF]"
               >
                 <Send />
               </button>

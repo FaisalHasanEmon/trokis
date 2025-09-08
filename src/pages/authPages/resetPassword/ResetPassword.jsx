@@ -9,7 +9,7 @@ export default function ResetPassword() {
 
   const handleConfirm = () => {
     // Handle password reset logic here
-    console.log("Password reset confirmed");
+    // console.log("Password reset confirmed");
     navigate("/auth/login");
   };
 
